@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Goals</title>
+</head>
+<body>
+  <h1>All Goals</h1>
+  <ul>
+    <% goals.forEach(goal => { %>
+      <li><%= goal.name %> - <%= goal.progress %>%</li>
+    <% }) %>
+  </ul>
+  <a href="/goals/new">Create New Goal</a>
+</body>
+</html>

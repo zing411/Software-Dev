@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transactions</title>
+</head>
+<body>
+  <h1>All Transactions</h1>
+  <ul>
+    <% transactions.forEach(transaction => { %>
+      <li><%= transaction.name %> - $<%= transaction.amount %></li>
+    <% }) %>
+  </ul>
+  <a href="/transactions/new">Create New Transaction</a>
+</body>
+</html>
+

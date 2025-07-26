@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Transaction</title>
+</head>
+<body>
+  <h1>Edit Transaction</h1>
+  <form action="/transactions/<%= transaction.id %>" method="POST">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="<%= transaction.name %>" required>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" value="<%= transaction.amount %>" required>
+    <button type="submit">Update</button>
+  </form>
+  <a href="/transactions">Back to Transactions</a>
+</body>
+</html>
