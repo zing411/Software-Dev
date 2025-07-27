@@ -7,6 +7,7 @@ const GoalSchema = new mongoose.Schema({
   currentAmount: { type: Number, default: 0 },
   deadline: { type: Date, required: true },
   createdAt: { type: Date, default: Date.now },
+  progress: { type: Number, default: 0 },
 });
 
 module.exports = mongoose.model('Goal', GoalSchema);
