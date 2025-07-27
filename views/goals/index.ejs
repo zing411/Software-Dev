@@ -8,7 +8,9 @@
   <h1>All Goals</h1>
   <ul>
     <% goals.forEach(goal => { %>
-      <li><%= goal.name %> - <%= goal.progress %>%</li>
+       <li>
+      <strong><%= goal.name %></strong> - Target: $<%= goal.targetAmount %> - Deadline: <%= goal.deadline.toDateString() %> - Progress: <%= goal.progress %>%
+    </li>
     <% }) %>
   </ul>
   <a href="/goals/new">Create New Goal</a>
