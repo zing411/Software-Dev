@@ -9,7 +9,7 @@
   <ul>
     <% goals.forEach(goal => { %>
        <li>
-      <strong><%= goal.name %></strong> - Target: $<%= goal.targetAmount %> - Deadline: <%= goal.deadline.toDateString() %> - Progress: <%= goal.progress %>%
+      <strong><%= goal.name %></strong> - Target: $<%= goal.targetAmount %> - Deadline: <%= goal.deadline.toISOString().split('T')[0] %> - Progress: <%= goal.progress %>%
     </li>
     <% }) %>
   </ul>
