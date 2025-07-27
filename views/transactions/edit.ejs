@@ -10,6 +10,14 @@
     <input type="hidden" name="_method" value="PUT">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="<%= transaction.name %>" required>
+
+    <label for="type">Type:</label>
+    <select id="type" name="type" required>
+      <option value="">-- Select type --</option>
+      <option value="income" <%= transaction.type === 'income' ? 'selected' : '' %>>Income</option>
+      <option value="expense" <%= transaction.type === 'expense' ? 'selected' : '' %>>Expense</option>
+    </select>
+
     <label for="amount">Amount:</label>
     <input type="number" id="amount" name="amount" value="<%= transaction.amount %>" required>
     <button type="submit">Update</button>
