@@ -8,7 +8,9 @@
   <h1>All Transactions</h1>
   <ul>
     <% transactions.forEach(transaction => { %>
-      <li><%= transaction.name %> - $<%= transaction.amount %></li>
+      <li>
+      <%= transaction.name %> - $<%= transaction.amount %> <a href="/transactions/<%= transaction._id %>/edit">Edit</a>
+      </li>
     <% }) %>
   </ul>
   <a href="/transactions/new">Create New Transaction</a>
