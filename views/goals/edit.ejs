@@ -10,6 +10,8 @@
     <input type="hidden" name="_method" value="PUT">
     <label for="name">Goal Name:</label>
     <input type="text" id="name" name="name" value="<%= goal.name %>" required>
+    <label for="targetAmount">Target Amount:</label>
+    <input type="number" id="targetAmount" name="targetAmount" value="<%= goal.targetAmount %>" step="1" required>
     <label for="deadline">Deadline:</label>
     <input type="date" id="deadline" name="deadline" value="<%= goal.deadline.toISOString().split('T')[0] %>" required>
     <label for="progress">Progress (%):</label>
