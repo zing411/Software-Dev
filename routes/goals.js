@@ -16,20 +16,21 @@ router.get('/search', async (req, res) => {
   }
   if (name) query.name = name;
   if(minTarAmount || maxTarAmount){
-    query.amount = {};
+    query.targetAmount = {};
 
-    if (minTarAmount) query.amount = {$gte: minTarAmount}
-    if (maxTarAmount) query.amount = {$lte: maxTarAmount}
+    if (minTarAmount) query.targetAmount.$gte = Number(minTarAmount)
+    if (maxTarAmount) query.targetAmount.$lte = Number(maxTarAmount)
   }
+
   if(minProgress || maxProgress){
     query.progress = {};
 
-    if (minProgress) query.progress = {$gte: minProgress}
-    if (maxProgress) query.progress = {$lte: maxProgress}
+    if (minProgress) query.progress.$gte = Number(minProgress)
+    if (maxProgress) query.progress.$lte = Number(maxProgress)
   }
 
   const filteredSearch = await Goal.find(query);
-  res.render('goals/index', { filteredSearch });
+  res.render('goals/index', { goals: filteredSearch });
 });
 
 router.get('/new', (req, res) => res.render('goals/new'));
