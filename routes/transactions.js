@@ -15,7 +15,6 @@ router.get('/search', async (req, res) => {
     user: req.session.userId,
   }
   if (type) query.type = type;
-  if (amount) query.amount = amount;
   if (category) query.category = category;
   if(minAmount || maxAmount){
     query.amount = {};
