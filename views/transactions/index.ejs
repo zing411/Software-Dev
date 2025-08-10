@@ -26,6 +26,7 @@
       <input type="text" id="category" name="category">
       <button type="submit">Search</button>
     </form>
+    
     <% transactions.forEach(transaction => { %>
       <li>
       <%= transaction.name %> - $<%= transaction.amount %> <% if (transaction.description) { %>
