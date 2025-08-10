@@ -10,12 +10,14 @@ const dashboardRoutes = require('./routes/dashboard');
 const transactionRoutes = require('./routes/transactions');
 const goalRoutes = require('./routes/goals');
 const ensureAuth = require('./middleware/auth');
+const checkUser = require('./middleware/user');
 
 const app = express()
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
 app.set('layout', 'layouts/layout');
+
+app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/finance', {
@@ -50,10 +52,10 @@ app.use(session({
 //     res.render("login")
 // })
 
-app.use('/auth', authRoutes);
-app.use('/transactions', ensureAuth, transactionRoutes);
-app.use('/goals', ensureAuth, goalRoutes);
-app.use('/dashboard', ensureAuth, dashboardRoutes);
+app.use('/auth', checkUser, authRoutes);
+app.use('/transactions', ensureAuth, checkUser, transactionRoutes);
+app.use('/goals', ensureAuth, checkUser, goalRoutes);
+app.use('/dashboard', ensureAuth, checkUser, dashboardRoutes);
 
 app.get('/', (req, res) => res.redirect('/auth/login'));
 
