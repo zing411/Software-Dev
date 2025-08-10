@@ -6,6 +6,25 @@
 </head>
 <body>
   <h1>All Goals</h1>
+  <form action="/goals/search" method="GET">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name">
+
+      <label for="minTarAmount">Minimum amount</label>
+      <input type="number" id="minTarAmount" name="minTarAmount">
+      
+      <label for="maxTarAmount">Maximum amount</label>
+      <input type="number" id="maxTarAmount" name="maxTarAmount">
+
+      <label for="minProgress">Minimum progress</label>
+      <input type="number" id="minProgress" name="minProgress">
+
+      <label for="maxProgress">Maximum progress</label>
+      <input type="number" id="maxProgress" name="maxProgress">
+
+      <button type="submit">Search</button>
+  </form>
+
   <ul>
     <% goals.forEach(goal => { %>
        <li>

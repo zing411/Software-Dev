@@ -7,6 +7,32 @@ router.get('/', async (req, res) => {
   res.render('goals/index', { goals });
 });
 
+router.get('/search', async (req, res) => {
+
+  const {name, minTarAmount, maxTarAmount, minProgress, maxProgress} = req.query;
+
+  const query ={
+    user: req.session.userId,
+  }
+  if (name) query.name = name;
+  if(minTarAmount || maxTarAmount){
+    query.targetAmount = {};
+
+    if (minTarAmount) query.targetAmount.$gte = Number(minTarAmount)
+    if (maxTarAmount) query.targetAmount.$lte = Number(maxTarAmount)
+  }
+
+  if(minProgress || maxProgress){
+    query.progress = {};
+
+    if (minProgress) query.progress.$gte = Number(minProgress)
+    if (maxProgress) query.progress.$lte = Number(maxProgress)
+  }
+
+  const filteredSearch = await Goal.find(query);
+  res.render('goals/index', { goals: filteredSearch });
+});
+
 router.get('/new', (req, res) => res.render('goals/new'));
 router.post('/', async (req, res) => {
   await new Goal({ ...req.body, currentAmount: 0, user: req.session.userId }).save();

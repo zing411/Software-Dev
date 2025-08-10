@@ -7,6 +7,31 @@ router.get('/', async (req, res) => {
   res.render('transactions/index', { transactions: all });
 });
 
+router.get('/search', async (req, res) => {
+
+  const {type, amount, category, minAmount, maxAmount} = req.query;
+
+  const query ={
+    user: req.session.userId,
+  }
+  if (type) query.type = type;
+  if (category) query.category = category;
+  if(minAmount || maxAmount){
+    query.amount = {};
+
+    if (minAmount) query.amount.$gte = Number(minAmount)
+    if (maxAmount) query.amount.$lte = Number(maxAmount)
+  }
+
+  const filteredSearch = await Transaction.find(query);
+  res.render('transactions/index', { transactions: filteredSearch });
+});
+
+router.get('/', async (req, res) => {
+  const all = await Transaction.find({ user: req.session.userId });
+  res.render('transactions/index', { transactions: all });
+});
+
 router.get('/new', (req, res) => res.render('transactions/new'));
 router.post('/', async (req, res) => {
   await new Transaction({ ...req.body, user: req.session.userId }).save();
