@@ -20,8 +20,8 @@ router.get('/search', async (req, res) => {
   if(minAmount || maxAmount){
     query.amount = {};
 
-    if (minAmount) query.amount = {$gte: minAmount}
-    if (maxAmount) query.amount = {$lte: maxAmount}
+    if (minAmount) query.amount.$gte = Number(minAmount)
+    if (maxAmount) query.amount.$lte = Number(maxAmount)
   }
 
   const filteredSearch = await Transaction.find(query);
