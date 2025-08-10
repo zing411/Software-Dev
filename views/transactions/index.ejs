@@ -7,6 +7,25 @@
 <body>
   <h1>All Transactions</h1>
   <ul>
+    <!--Search form-->
+    <form action="/transactions/search" method="GET">
+      <label for="type">Type:</label>
+      <select id="type" name="type">
+        <option value="">Nothing</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+
+      <label for="minAmount">Minimum amount</label>
+      <input type="number" id="minAmount" name="minAmount">
+      
+      <label for="maxAmount">Maximum amount</label>
+      <input type="number" id="maxAmount" name="maxAmount">
+
+      <label for="category">Category</label>
+      <input type="text" id="category" name="category">
+      <button type="submit">Search</button>
+    </form>
     <% transactions.forEach(transaction => { %>
       <li>
       <%= transaction.name %> - $<%= transaction.amount %> <% if (transaction.description) { %>
