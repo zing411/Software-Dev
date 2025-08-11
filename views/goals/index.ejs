@@ -90,6 +90,7 @@
     /*conttainer for the cards*/
     .cards-container {
       display: grid;
+      
       gap: 20px;
     }
 
@@ -140,6 +141,7 @@
       padding: 0;
     }
 
+
     .card-actions a {
       background-color: #27ae60;
       color: white;
@@ -161,19 +163,7 @@
 </head>
 
 <body>
-  <nav>
-    <% if (user) { %>
-      <a href="/dashboard">Home</a>
-      <a href="/transactions">View Transactions</a>
-      <a href="/transactions/new">Add Transaction</a>
-      <a href="/goals">View Goals</a>
-      <a href="/goals/new">Add Goal</a>
-      <a href="/auth/logout">Logout</a>
-    <% } else { %>
-      <a href="/auth/login">Login</a>
-      <a href="/auth/register">Register</a>
-    <% } %>
-  </nav>
+ <%- include('../partials/header.ejs') %>
 
   <div class="container">
   <h1>My Goals</h1>
