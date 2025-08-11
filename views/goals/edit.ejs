@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Edit Goal</title>
-  <style>
 
-/*styling the form*/
-.form-container {
+  <style>
+    /*styling form*/
+    .form-container {
       max-width: 600px;
       margin: 30px auto;
       padding: 20px;
@@ -58,7 +58,7 @@
       background-color: rgb(240, 191, 31);
     }
 
-/*this is for the back button*/
+    /*link for back button*/
     .back-link {
       display: block;
       margin-top: 15px;
@@ -75,7 +75,7 @@
 </head>
 
 <body>
-<div class="form-container">
+  <div class="form-container">
     <h1>Edit Goal</h1>
     <form action="/goals/<%= goal.id %>" method="POST">
       <input type="hidden" name="_method" value="PUT">
@@ -97,8 +97,6 @@
 
     <a href="/goals" class="back-link">Back to Goals</a>
   </div>
+
 </body>
 </html>
-
-
-
