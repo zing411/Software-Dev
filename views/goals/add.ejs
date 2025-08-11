@@ -1,0 +1,15 @@
+<h1>Add money to a goal</h1>
+<p>To add enter the amount you want to add. Then select which goal you would like to add it to.</p>
+<form action="/goals/add/<%= goal._id %>" method="POST">
+  <label for="Amount">Amount:</label>
+  <input type="number" name="amount" required />
+  <ul>
+    <% goals.forEach(goal => { %>
+      <li>
+        <strong><%= goal.name %></strong> - Target: $<%= goal.targetAmount %> - 
+        Deadline: <%= goal.deadline.toISOString().split('T')[0] %> - Progress: <%= goal.progress %>%
+        <button type="submit">Add money?</button>
+      </li>
+    <% }) %>
+  </ul>
+</form>
