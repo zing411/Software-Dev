@@ -52,9 +52,9 @@ router.post('/:id/delete', async (req, res) => {
   res.redirect('/goals');
 });
 
-router.get('/', async (req, res) =>{
+router.get('/goals/add', async (req, res) =>{
   const goals = await Goal.find({ user: req.session.userId });
-  res.render('', {goals: goals})
+  res.render('goals/add', {goals: goals})
 })
 router.post('/', async (req, res) =>{
   const goal = await Goal.findById(req.params.id);
