@@ -61,8 +61,8 @@ router.post('/add/:id', async (req, res) =>{
   const givenAmount = req.body.amount;
 
   updatedGoal ={
-    currentAmount: goal.currentAmount + givenAmount,
-    progress: Math.round(((goal.currentAmount + givenAmount) / goal.targetAmount) * 100)
+    currentAmount: Number(goal.currentAmount) + Number(givenAmount),
+    progress: Math.round(((Number(goal.currentAmount) + Number(givenAmount)) / Number(goal.targetAmount)) * 100)
   }
 
   await Goal.findByIdAndUpdate(req.params.id, updatedGoal);
