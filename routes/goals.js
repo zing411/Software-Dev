@@ -52,4 +52,22 @@ router.post('/:id/delete', async (req, res) => {
   res.redirect('/goals');
 });
 
+router.get('/', async (req, res) =>{
+  const goals = await Goal.find({ user: req.session.userId });
+  res.render('', {goals: goals})
+})
+router.post('/', async (req, res) =>{
+  const goal = await Goal.findById(req.params.id);
+  const givenAmount = req.body.amount;
+
+  updatedGoal ={
+    currentAmount: goal.currentAmount + givenAmount,
+    progress: ((goal.currentAmount + givenAmount) / goal.targetAmount) * 100
+  }
+
+  await Goal.findByIdAndUpdate(req.params.id, updatedGoal);
+  
+  res.redirect('')
+})
+
 module.exports = router;
