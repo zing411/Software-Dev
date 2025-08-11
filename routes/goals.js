@@ -52,7 +52,7 @@ router.post('/:id/delete', async (req, res) => {
   res.redirect('/goals');
 });
 
-router.get('/goals/add', async (req, res) =>{
+router.get('/add', async (req, res) =>{
   const goals = await Goal.find({ user: req.session.userId });
   res.render('goals/add', {goals: goals})
 })
