@@ -1,7 +1,104 @@
-<h1>Register</h1>
-<form action="/auth/register" method="post">
-  <input name="email" type="email" placeholder="Email" required>
-  <input name="password" type="password" placeholder="Password" required>
-  <button>Register</button>
-</form>
-<a href="/auth/login">Login</a>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f6f8;
+    }
+
+    .right {
+      flex: 1;
+      background-image: url('https://www.colourblindawareness.org/wp-content/uploads/2018/11/iStock-509484358.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.7;
+     }
+
+    .container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 320px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+     button {
+      padding: 10px;
+      background-color: #cf9f02;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+   button:hover {
+      background-color: rgb(240, 191, 31);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="left">
+    <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in the form below to create an account.</p>
+    <form action="/auth/register" method="post">
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="password" type="password" placeholder="Password" required>
+      <button>Register</button>
+    </form>
+    <a href="/auth/login">Login</a>
+  </div>
+  </div>
+  <div class="right"></div>
+</body>
+</html>
