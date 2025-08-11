@@ -9,11 +9,12 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
 
-  const {type, amount, category, minAmount, maxAmount} = req.query;
+  const {type, name, category, minAmount, maxAmount} = req.query;
 
   const query ={
     user: req.session.userId,
   }
+  if (name) query.name = name;
   if (type) query.type = type;
   if (category) query.category = category;
   if(minAmount || maxAmount){
