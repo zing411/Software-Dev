@@ -1,6 +1,6 @@
 <h1>Add money to a goal</h1>
 <p>To add enter the amount you want to add. Then select which goal you would like to add it to.</p>
-<form action="/goals/add/<%= goal._id %>" method="POST">
+<form id="goalForm" method="POST">
   <label for="Amount">Amount:</label>
   <input type="number" name="amount" required />
   <ul>
@@ -8,8 +8,16 @@
       <li>
         <strong><%= goal.name %></strong> - Target: $<%= goal.targetAmount %> - 
         Deadline: <%= goal.deadline.toISOString().split('T')[0] %> - Progress: <%= goal.progress %>%
-        <button type="submit">Add money?</button>
+        <button type="button" onclick="submitToGoal('<%= goal._id %>')">Add money?</button>
       </li>
     <% }) %>
   </ul>
 </form>
+
+<script>
+  function submitToGoal(goalId) {
+    const form = document.getElementById('goalForm');
+    form.action = `/goals/add/${goalId}`;
+    form.submit();
+  }
+</script>

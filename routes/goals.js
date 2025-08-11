@@ -56,7 +56,7 @@ router.get('/add', async (req, res) =>{
   const goals = await Goal.find({ user: req.session.userId });
   res.render('goals/add', {goals: goals})
 })
-router.post('/', async (req, res) =>{
+router.post('/add/:id', async (req, res) =>{
   const goal = await Goal.findById(req.params.id);
   const givenAmount = req.body.amount;
 
@@ -67,7 +67,7 @@ router.post('/', async (req, res) =>{
 
   await Goal.findByIdAndUpdate(req.params.id, updatedGoal);
   
-  res.redirect('')
+  res.redirect('/goals/add')
 })
 
 module.exports = router;
