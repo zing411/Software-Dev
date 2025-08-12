@@ -203,6 +203,9 @@
       <% transactions.forEach(transaction => { %>
         <div class="transaction-card">
           <h2><%= transaction.name %> - $<%= transaction.amount %></h2>
+
+          <p><strong>Type:</strong> <%= transaction.type %></p>
+          <p><strong>Category:</strong> <%= transaction.category %></p>
           <div class="transaction-info">
             <% if (transaction.description) { %>
               <p><strong>Description:</strong> <%= transaction.description %></p>
