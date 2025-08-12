@@ -11,6 +11,12 @@
       color: #333
     }
 
+  .wrapper {
+      display: flex;
+      height: 100vh;   /* full viewport height */
+      width: 100vw;    /* full viewport width */
+    }
+
     nav {
       background-color: #cca423;
       padding: 15px 30px; 
@@ -34,6 +40,7 @@
       justify-content: center;
       align-items: center;
       background-color: #f4f6f8;
+      height: 100%;
     }
 
     .right {
@@ -43,6 +50,7 @@
       background-position: center;
       background-repeat: no-repeat;
       opacity: 0.7;
+      height: 100%;
      }
 
     .container {
@@ -109,6 +117,7 @@
   
 </head>
 <body>
+<div class="wrapper">
   <div class="left">
     <div class="container">
     <h1>Register</h1>
@@ -122,5 +131,6 @@
   </div>
   </div>
   <div class="right"></div>
+</div>
 </body>
 </html>
