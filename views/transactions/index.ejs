@@ -183,8 +183,17 @@
       <label for="maxAmount">Maximum amount</label>
       <input type="number" id="maxAmount" name="maxAmount">
 
-      <label for="category">Category</label>
-      <input type="text" id="category" name="category">
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+          <option value="">-- Select category --</option>
+          <option value="Work">Work</option>
+          <option value="School">School</option>
+          <option value="Bills">Bills</option>
+          <option value="Personal">Personal</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Rent">Rent</option>
+          <option value="Marketplace">Marketplace</option>
+      </select>
 
       <button type="submit">Search</button>
     </form>
