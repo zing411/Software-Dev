@@ -193,6 +193,7 @@
         <div class="goal-info">
           <p><strong>Target:</strong> $<%= goal.targetAmount %></p>
           <p><strong>Deadline:</strong> <%= goal.deadline.toISOString().split('T')[0] %></p>
+          <p><strong>Current Amount:</strong>$<%= goal.currentAmount %></p>
           <p><strong>Progress:</strong> <%= goal.progress %>%</p>
         </div>
         <div class="card-actions">
