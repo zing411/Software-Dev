@@ -35,7 +35,7 @@ router.get('/search', async (req, res) => {
 
 router.get('/new', (req, res) => res.render('goals/new'));
 router.post('/', async (req, res) => {
-  await new Goal({ ...req.body, currentAmount: 0, user: req.session.userId }).save();
+  await new Goal({ ...req.body, currentAmount: 0, progress: 0, user: req.session.userId }).save();
   res.redirect('/goals');
 });
 

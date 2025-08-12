@@ -100,25 +100,21 @@
 
 <body>
 <div class="form-container">
-    <h1>Create a New Goal</h1>
-    <form action="/goals" method="POST">
-      <label for="name">Goal Name:</label>
-      <input type="text" id="name" name="name" required>
+  <h1>Create a New Goal</h1>
+  <form action="/goals" method="POST">
+    <label for="name">Goal Name:</label>
+    <input type="text" id="name" name="name" required>
 
-      <label for="targetAmount">Target Amount:</label>
-      <input type="number" id="targetAmount" name="targetAmount" step="1" required>
+    <label for="targetAmount">Target Amount:</label>
+    <input type="number" id="targetAmount" name="targetAmount" step="1" required>
 
-      <label for="deadline">Deadline:</label>
-      <input type="date" id="deadline" name="deadline" required>
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" required>
+    
+    <button type="submit">Create</button>
+  </form>
 
-      <label for="progress">Progress (%):</label>
-      <input type="number" id="progress" name="progress" value="0" min="0" max="100" required>
-
-      <button type="submit">Create</button>
-    </form>
-
-    <a href="/goals" class="back-link">Back to Goals</a>
+  <a href="/goals" class="back-link">Back to Goals</a>
   </div>
-
 </body>
 </html>
