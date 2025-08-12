@@ -3,40 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <title>Goals</title>
-</head>
-<body>
-  <h1>All Goals</h1>
-  <form action="/goals/search" method="GET">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name">
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
 
-      <label for="minTarAmount">Minimum amount</label>
-      <input type="number" id="minTarAmount" name="minTarAmount">
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #cca423;
+      padding: 15px 30px; 
+      display: flex;
+      gap: 20px; 
+      flex-wrap: wrap; 
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /*the form for search/filter*/
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    form label {
+      font-weight: bold;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    form input {
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    form button {
+      grid-column: span 1;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      max-width: 160px;
+      height: 42px;
+    }
+
+    form button:hover {
+      background-color: #1c5980;
+    }
+
+    /*conttainer for the cards*/
+    .cards-container {
+      display: grid;
       
-      <label for="maxTarAmount">Maximum amount</label>
-      <input type="number" id="maxTarAmount" name="maxTarAmount">
+      gap: 20px;
+    }
 
-      <label for="minProgress">Minimum progress</label>
-      <input type="number" id="minProgress" name="minProgress">
+    /*individual goal cards*/
+    .goal-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-      <label for="maxProgress">Maximum progress</label>
-      <input type="number" id="maxProgress" name="maxProgress">
+    .goal-card h2 {
+      margin: 0 0 10px 0;
+      color: #2980b9;
+      font-size: 1.4em;
+    }
 
-      <button type="submit">Search</button>
+    .goal-info {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .card-actions a,
+    .card-actions button {
+      padding: 10px 16px; 
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      text-decoration: none;
+      line-height: normal;
+      height: auto;
+      flex: 0; 
+    }
+
+    .card-actions form {
+      display: contents; 
+      margin: 0; 
+      padding: 0;
+    }
+
+
+    .card-actions a {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .card-actions a:hover {
+      background-color: #1f874b;
+    }
+
+    .card-actions button {
+      background-color: #c0392b;
+      color: white;
+    }
+
+    .card-actions button:hover {
+      background-color: #902220;
+    }
+  </style>
+</head>
+
+<body>
+ 
+
+  <div class="container">
+  <h1>My Goals</h1>
+  <form action="/goals/search" method="GET">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name">
+
+    <label for="minTarAmount">Minimum amount</label>
+    <input type="number" id="minTarAmount" name="minTarAmount">
+    
+    <label for="maxTarAmount">Maximum amount</label>
+    <input type="number" id="maxTarAmount" name="maxTarAmount">
+
+    <label for="minProgress">Minimum progress</label>
+    <input type="number" id="minProgress" name="minProgress">
+
+    <label for="maxProgress">Maximum progress</label>
+    <input type="number" id="maxProgress" name="maxProgress">
+
+    <button type="submit">Search</button>
   </form>
 
-  <ul>
+   <div class="cards-container">
     <% goals.forEach(goal => { %>
-       <li>
-      <strong><%= goal.name %></strong> - Target: $<%= goal.targetAmount %> - Deadline: <%= goal.deadline.toISOString().split('T')[0] %> - Progress: <%= goal.progress %>%
-       <a href="/goals/<%= goal._id %>/edit">Edit</a>
-      <form action="/goals/<%= goal._id %>/delete" method="POST" style="display:inline;">
-       <button type="submit" onclick="return confirm('Are you sure you want to delete this transaction?')">Delete</button>
-      </form>
-    </li>
+      <div class="goal-card">
+        <h2><%= goal.name %></h2>
+        <div class="goal-info">
+          <p><strong>Target:</strong> $<%= goal.targetAmount %></p>
+          <p><strong>Deadline:</strong> <%= goal.deadline.toISOString().split('T')[0] %></p>
+          <p><strong>Current Amount:</strong>$<%= goal.currentAmount %></p>
+          <p><strong>Progress:</strong> <%= goal.progress %>%</p>
+        </div>
+        <div class="card-actions">
+          <a href="/goals/<%= goal._id %>/edit">Edit</a>
+          <form action="/goals/<%= goal._id %>/delete" method="POST">
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this goal?')">Delete</button>
+          </form>
+        </div>
+      </div>
     <% }) %>
-  </ul>
-  <a href="/goals/new">Create New Goal</a>
-  <a href="/dashboard">Back to dashboard</a>
+  </div>
+
+  <br>
+
+  </div>
 </body>
 </html>
