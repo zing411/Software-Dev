@@ -1,10 +1,14 @@
 <header>
   <nav>
-    <a href="/">Home</a>
     <% if (user) { %>
-      <a href="/dashboard">Dashboard</a>
+      <a href="/dashboard">Home</a>
+      <a href="/transactions">View Transactions</a>
+      <a href="/transactions/new">Add Transaction</a>
+      <a href="/goals">View Goals</a>
+      <a href="/goals/new">Add Goal</a>
       <a href="/auth/logout">Logout</a>
-    <% } else { %>
+    <% } 
+    else { %>
       <a href="/auth/login">Login</a>
       <a href="/auth/register">Register</a>
     <% } %>

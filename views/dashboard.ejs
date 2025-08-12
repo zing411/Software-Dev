@@ -1,6 +1,20 @@
-<h1>Dashboard</h1>
-<p>Income: <%= income %> | Expenses: <%= expenses %> | Balance: <%= balance %></p>
-<a href="/transactions">View Transactions</a>
-<a href="/transactions/new">Add Transaction</a>
-<a href="/goals">View Goals</a>
-<a href="/goals/new">Add Goal</a>
+ <div class="container">
+    <h1>Dashboard</h1>
+
+    <div class="stats">
+      Income: $<%= income %> | Expenses: $<%= expenses %> | Balance: $<%= balance %>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <h2>Transactions</h2>
+        <a href="/transactions">View Transactions</a>
+        <a href="/transactions/new">Add Transaction</a>
+      </div>
+      <div class="dashboard-card">
+        <h2>Goals</h2>
+        <a href="/goals">View Goals</a>
+        <a href="/goals/new">Add Goal</a>
+      </div>
+    </div>
+  </div>
