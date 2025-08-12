@@ -1,24 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Edit Goal</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    nav {
+      background-color: #cca423;
+      padding: 15px 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+
+    /*styling form*/
+    .form-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f4f7f8;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="date"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    form button {
+      margin-top: 25px;
+      background-color: #cf9f02;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: rgb(240, 191, 31);
+    }
+
+    /*link for back button*/
+    .back-link {
+      display: block;
+      margin-top: 15px;
+      text-align: center;
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Edit Goal</h1>
-  <form action="/goals/<%= goal.id %>" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-    <label for="name">Goal Name:</label>
-    <input type="text" id="name" name="name" value="<%= goal.name %>" required>
-    <label for="targetAmount">Target Amount:</label>
-    <input type="number" id="targetAmount" name="targetAmount" value="<%= goal.targetAmount %>" step="1" required>
-    <label for="deadline">Deadline:</label>
-    <input type="date" id="deadline" name="deadline" value="<%= goal.deadline.toISOString().split('T')[0] %>" required>
-    <label for="progress">Progress (%):</label>
-    <input type="number" id="progress" name="progress" value="<%= goal.progress %>" required>
-    <button type="submit">Update</button>
-  </form>
-  <a href="/goals">Back to Goals</a>
+  <div class="form-container">
+    <h1>Edit Goal</h1>
+    <form action="/goals/<%= goal.id %>" method="POST">
+      <input type="hidden" name="_method" value="PUT">
+      
+      <label for="name">Goal Name:</label>
+      <input type="text" id="name" name="name" value="<%= goal.name %>" required>
+
+      <label for="targetAmount">Target Amount:</label>
+      <input type="number" id="targetAmount" name="targetAmount" value="<%= goal.targetAmount %>" step="1" required>
+
+      <label for="deadline">Deadline:</label>
+      <input type="date" id="deadline" name="deadline" value="<%= goal.deadline.toISOString().split('T')[0] %>" required>
+
+      <label for="progress">Progress (%):</label>
+      <input type="number" id="progress" name="progress" value="<%= goal.progress %>" min="0" max="100" required>
+
+      <button type="submit">Update</button>
+    </form>
+
+    <a href="/goals" class="back-link">Back to Goals</a>
+  </div>
+
 </body>
 </html>
-
